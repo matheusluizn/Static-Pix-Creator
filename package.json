@@ -1,0 +1,8 @@
+{
+  "name": "pix-creator-class",
+  "version": "1.0.0",
+  "description": "A class to create static Pix codes",
+  "main": "Pix.js",
+  "author": "Matheus Luiz",
+  "license": "ISC"
+}
