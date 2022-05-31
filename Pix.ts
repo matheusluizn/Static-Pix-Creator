@@ -15,7 +15,14 @@ export default class Pix{
     ID_CRC16: string;
     CRC16_LENGTH: string;
 
-    constructor() {
+    private PIX_KEY: string;
+    private DESCRIPTION_PAYLOAD: string;
+    private MERCHANT_NAME: string;
+    private MERCHANT_CITY: string;
+    private TXID: string;
+    private AMOUNT: string;
+
+    constructor(pixKey: string, descriptionPayload: string, merchantName: string, merchantCity: string, txid: string, amount: number) {
         this.ID_PAYLOAD_FORMAT_INDICATOR = '00';
         this.ID_MERCHANT_ACCOUNT_INFORMATION = '26';
         this.ID_MERCHANT_ACCOUNT_INFORMATION_GUI = '00';
@@ -31,5 +38,12 @@ export default class Pix{
         this.ID_ADDITIONAL_DATA_FIELD_TEMPLATE_TXID = '05';
         this.ID_CRC16 = '63';
         this.CRC16_LENGTH = '04';
+
+        this.PIX_KEY = pixKey;
+        this.DESCRIPTION_PAYLOAD = descriptionPayload;
+        this.MERCHANT_NAME = merchantName;
+        this.MERCHANT_CITY = merchantCity;
+        this.TXID = txid;
+        this.AMOUNT = amount.toFixed(2);
     }
 }
