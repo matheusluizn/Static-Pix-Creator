@@ -66,4 +66,20 @@ export default class Pix{
         const txid = this.getValue(this.ID_ADDITIONAL_DATA_FIELD_TEMPLATE_TXID, this.TXID);
         return this.getValue(this.ID_ADDITIONAL_DATA_FIELD_TEMPLATE, txid);
     }
+
+    private getRedudancyCheck(payload: string): string {
+        payload += this.ID_CRC16 + this.CRC16_LENGTH;
+
+        let polinomio = 0x1021;
+        let resultado = 0xFFFF;
+
+        for (let i = 0; i < payload.length; i++) {
+            resultado ^= (payload[i].charCodeAt(0) << 8);
+            for (let j = 0; j < 8; j++) {
+                if ((resultado <<= 1) & 0x10000) resultado ^= polinomio;
+                resultado &= 0xFFFF;
+            }
+        }
+        return `${this.ID_CRC16}${this.CRC16_LENGTH}${resultado.toString(16).padStart(4, '0').toUpperCase()}`;
+    }
 }
