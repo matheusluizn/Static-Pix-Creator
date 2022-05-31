@@ -51,4 +51,14 @@ export default class Pix{
         const size = value.length.toString().padStart(2, '0');
         return `${id}${size}${value}`;
     }
+
+    private getMerchantAccountInformation(): string {
+        const gui = this.getValue(this.ID_MERCHANT_ACCOUNT_INFORMATION_GUI, 'br.gov.bcb.pix');
+        const key = this.getValue(this.ID_MERCHANT_ACCOUNT_INFORMATION_KEY, this.PIX_KEY);
+        if (this.DESCRIPTION_PAYLOAD.length > 25){
+            this.DESCRIPTION_PAYLOAD = this.DESCRIPTION_PAYLOAD.substring(0, 25);
+        }
+        const description = this.getValue(this.ID_MERCHANT_ACCOUNT_INFORMATION_DESCRIPTION, this.DESCRIPTION_PAYLOAD);
+        return this.getValue(this.ID_MERCHANT_ACCOUNT_INFORMATION, `${gui}${key}${description}`);
+    }
 }
