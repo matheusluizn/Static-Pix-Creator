@@ -1,4 +1,4 @@
-export default class Pix{
+export default class Pix {
     ID_PAYLOAD_FORMAT_INDICATOR: string;
     ID_MERCHANT_ACCOUNT_INFORMATION: string;
     ID_MERCHANT_ACCOUNT_INFORMATION_GUI: string;
@@ -81,5 +81,19 @@ export default class Pix{
             }
         }
         return `${this.ID_CRC16}${this.CRC16_LENGTH}${resultado.toString(16).padStart(4, '0').toUpperCase()}`;
+    }
+
+    getPayload(): string {
+        const payload = this.getValue(this.ID_PAYLOAD_FORMAT_INDICATOR, "01") +
+            this.getMerchantAccountInformation() +
+            this.getValue(this.ID_MERCHANT_CATEGORY_CODE, "0000") +
+            this.getValue(this.ID_TRANSACTION_CURRENCY, "986") +
+            this.getValue(this.ID_TRANSACTION_AMOUNT, this.AMOUNT) +
+            this.getValue(this.ID_COUNTRY_CODE, "BR") +
+            this.getValue(this.ID_MERCHANT_NAME, this.MERCHANT_NAME) +
+            this.getValue(this.ID_MERCHANT_CITY, this.MERCHANT_CITY) +
+            this.getAdditionalDataField()
+
+        return `${payload}${this.getRedudancyCheck(payload)}`;
     }
 }
