@@ -4,5 +4,15 @@
   "description": "A class to create static Pix codes",
   "main": "Pix.js",
   "author": "Matheus Luiz",
-  "license": "ISC"
+  "license": "ISC",
+  "scripts": {
+    "build": "tsc",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "typescript": "^4.7.2"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.36"
+  }
 }
