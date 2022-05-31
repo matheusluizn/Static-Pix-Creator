@@ -61,4 +61,9 @@ export default class Pix{
         const description = this.getValue(this.ID_MERCHANT_ACCOUNT_INFORMATION_DESCRIPTION, this.DESCRIPTION_PAYLOAD);
         return this.getValue(this.ID_MERCHANT_ACCOUNT_INFORMATION, `${gui}${key}${description}`);
     }
+
+    private getAdditionalDataField(): string {
+        const txid = this.getValue(this.ID_ADDITIONAL_DATA_FIELD_TEMPLATE_TXID, this.TXID);
+        return this.getValue(this.ID_ADDITIONAL_DATA_FIELD_TEMPLATE, txid);
+    }
 }
