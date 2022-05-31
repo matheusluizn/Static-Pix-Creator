@@ -1,4 +1,4 @@
-export default class Pix {
+module.exports = class Pix {
     ID_PAYLOAD_FORMAT_INDICATOR: string;
     ID_MERCHANT_ACCOUNT_INFORMATION: string;
     ID_MERCHANT_ACCOUNT_INFORMATION_GUI: string;
