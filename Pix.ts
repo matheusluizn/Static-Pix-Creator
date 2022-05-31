@@ -46,4 +46,9 @@ export default class Pix{
         this.TXID = txid;
         this.AMOUNT = amount.toFixed(2);
     }
+
+    private getValue(id: string, value: string): string {
+        const size = value.length.toString().padStart(2, '0');
+        return `${id}${size}${value}`;
+    }
 }
