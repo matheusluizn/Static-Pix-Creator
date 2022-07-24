@@ -1,21 +1,21 @@
 import IPix from "./interfaces/pix"
 
 export default class Pix {
-    ID_PAYLOAD_FORMAT_INDICATOR: string;
-    ID_MERCHANT_ACCOUNT_INFORMATION: string;
-    ID_MERCHANT_ACCOUNT_INFORMATION_GUI: string;
-    ID_MERCHANT_ACCOUNT_INFORMATION_KEY: string;
-    ID_MERCHANT_ACCOUNT_INFORMATION_DESCRIPTION: string;
-    ID_MERCHANT_CATEGORY_CODE: string;
-    ID_TRANSACTION_CURRENCY: string;
-    ID_TRANSACTION_AMOUNT: string;
-    ID_COUNTRY_CODE: string;
-    ID_MERCHANT_NAME: string;
-    ID_MERCHANT_CITY: string;
-    ID_ADDITIONAL_DATA_FIELD_TEMPLATE: string;
-    ID_ADDITIONAL_DATA_FIELD_TEMPLATE_TXID: string;
-    ID_CRC16: string;
-    CRC16_LENGTH: string;
+    private readonly ID_PAYLOAD_FORMAT_INDICATOR = '00';
+    private readonly ID_MERCHANT_ACCOUNT_INFORMATION = '26';
+    private readonly ID_MERCHANT_ACCOUNT_INFORMATION_GUI = '00';
+    private readonly ID_MERCHANT_ACCOUNT_INFORMATION_KEY = '01';
+    private readonly ID_MERCHANT_ACCOUNT_INFORMATION_DESCRIPTION = '02';
+    private readonly ID_MERCHANT_CATEGORY_CODE = '52';
+    private readonly ID_TRANSACTION_CURRENCY = '53';
+    private readonly ID_TRANSACTION_AMOUNT = '54';
+    private readonly ID_COUNTRY_CODE = '58';
+    private readonly ID_MERCHANT_NAME = '59';
+    private readonly ID_MERCHANT_CITY = '60';
+    private readonly ID_ADDITIONAL_DATA_FIELD_TEMPLATE = '62';
+    private readonly ID_ADDITIONAL_DATA_FIELD_TEMPLATE_TXID = '05';
+    private readonly ID_CRC16 = '63';
+    private readonly CRC16_LENGTH = '04';
 
     private PIX_KEY: string;
     private DESCRIPTION_PAYLOAD: string;
@@ -25,22 +25,6 @@ export default class Pix {
     private AMOUNT: string;
 
     constructor({ pixKey, descriptionPayload, merchantName, merchantCity, txid, amount }: IPix) {
-        this.ID_PAYLOAD_FORMAT_INDICATOR = '00';
-        this.ID_MERCHANT_ACCOUNT_INFORMATION = '26';
-        this.ID_MERCHANT_ACCOUNT_INFORMATION_GUI = '00';
-        this.ID_MERCHANT_ACCOUNT_INFORMATION_KEY = '01';
-        this.ID_MERCHANT_ACCOUNT_INFORMATION_DESCRIPTION = '02';
-        this.ID_MERCHANT_CATEGORY_CODE = '52';
-        this.ID_TRANSACTION_CURRENCY = '53';
-        this.ID_TRANSACTION_AMOUNT = '54';
-        this.ID_COUNTRY_CODE = '58';
-        this.ID_MERCHANT_NAME = '59';
-        this.ID_MERCHANT_CITY = '60';
-        this.ID_ADDITIONAL_DATA_FIELD_TEMPLATE = '62';
-        this.ID_ADDITIONAL_DATA_FIELD_TEMPLATE_TXID = '05';
-        this.ID_CRC16 = '63';
-        this.CRC16_LENGTH = '04';
-
         this.PIX_KEY = pixKey;
         this.DESCRIPTION_PAYLOAD = descriptionPayload;
         this.MERCHANT_NAME = merchantName;
