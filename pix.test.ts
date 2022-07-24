@@ -13,8 +13,8 @@ import { equal } from "assert"
       }
       const pix = new Pix(pixData);
       const value = pix.getPayload();
-      const testCode = "00020126670014br.gov.bcb.pix0136123e4567-e12b-12d1-a456-4266554400000205Teste52040000530398654045.005802BR5913Fulano de Tal6008BRASILIA6207050312363040E95"
-      equal(value, testCode);
+      const mockPix = "00020126670014br.gov.bcb.pix0136123e4567-e12b-12d1-a456-4266554400000205Teste52040000530398654045.005802BR5913Fulano de Tal6008BRASILIA6207050312363040E95"
+      equal(value, mockPix);
     }
   })
 
