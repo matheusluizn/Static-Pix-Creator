@@ -1,4 +1,6 @@
-module.exports = class Pix {
+import IPix from "./interfaces/pix"
+
+export default class Pix {
     ID_PAYLOAD_FORMAT_INDICATOR: string;
     ID_MERCHANT_ACCOUNT_INFORMATION: string;
     ID_MERCHANT_ACCOUNT_INFORMATION_GUI: string;
@@ -22,7 +24,7 @@ module.exports = class Pix {
     private TXID: string;
     private AMOUNT: string;
 
-    constructor(pixKey: string, descriptionPayload: string, merchantName: string, merchantCity: string, txid: string, amount: number) {
+    constructor({ pixKey, descriptionPayload, merchantName, merchantCity, txid, amount }: IPix) {
         this.ID_PAYLOAD_FORMAT_INDICATOR = '00';
         this.ID_MERCHANT_ACCOUNT_INFORMATION = '26';
         this.ID_MERCHANT_ACCOUNT_INFORMATION_GUI = '00';
@@ -55,7 +57,7 @@ module.exports = class Pix {
     private getMerchantAccountInformation(): string {
         const gui = this.getValue(this.ID_MERCHANT_ACCOUNT_INFORMATION_GUI, 'br.gov.bcb.pix');
         const key = this.getValue(this.ID_MERCHANT_ACCOUNT_INFORMATION_KEY, this.PIX_KEY);
-        if (this.DESCRIPTION_PAYLOAD.length > 25){
+        if (this.DESCRIPTION_PAYLOAD.length > 25) {
             this.DESCRIPTION_PAYLOAD = this.DESCRIPTION_PAYLOAD.substring(0, 25);
         }
         const description = this.getValue(this.ID_MERCHANT_ACCOUNT_INFORMATION_DESCRIPTION, this.DESCRIPTION_PAYLOAD);
